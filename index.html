@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartPocket — Expense Tracker</title>
+  <meta name="color-scheme" content="light dark" />
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Nav -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <div class="brand">
+        <div class="brand-logo">💰</div>
+        <div>SmartPocket</div>
+      </div>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#home">Home</a>
+        <a href="#budget">Budget</a>
+        <a href="#expenses">Expenses</a>
+        <a href="#savings">Savings</a>
+      </nav>
+      <div class="nav-cta">
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme" title="Toggle light / dark">
+          <span id="themeIcon" aria-hidden="true">🌞</span>
+          <span id="themeLabel">Light</span>
+          <span class="dot"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container stack">
+    <!-- Home -->
+    <section id="home" class="section">
+      <h1 class="title">Welcome to SmartPocket</h1>
+      <p class="subtitle">Track expenses, get personalized tips, and build smarter saving habits — all in a minimal, fast, and elegant interface.</p>
+
+      <div class="age-group" id="ageGroup">
+        <div class="age-card" data-age-group="student">
+          <h3>Students / Youth (18–25)</h3>
+          <p>Start strong: habits, basics of investing, and avoiding debt traps.</p>
+        </div>
+        <div class="age-card" data-age-group="professional">
+          <h3>Working Professionals (26–60)</h3>
+          <p>Optimize cashflow, plan goals, and diversify investments.</p>
+        </div>
+        <div class="age-card" data-age-group="senior">
+          <h3>Retired / Senior Citizens (60+)</h3>
+          <p>Preserve capital, sustain withdrawals, and budget healthcare.</p>
+        </div>
+      </div>
+
+      <div id="finance-tips" class="stack" style="margin-top:18px; display:none">
+        <h2 class="title" style="font-size:1.3rem">Personalized Finance Tips</h2>
+        <ul id="tip-list" class="stack" style="list-style:none; padding:0; margin:0"></ul>
+      </div>
+    </section>
+
+    <!-- Budget -->
+    <section id="budget" class="section stack">
+      <h2 class="title">Monthly Budgeting</h2>
+      <div class="grid">
+        <div class="col-6 stack">
+          <label class="field">
+            <span>Monthly Budget (₹)</span>
+            <input type="number" id="monthly-budget" placeholder="Enter your monthly budget" />
+          </label>
+          <div>
+            <button class="btn primary" id="set-budget">Set Budget</button>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="summary">
+            <div class="summary-card">
+              <h4>Total Budget</h4>
+              <div class="amt" id="total-budget">₹0</div>
+            </div>
+            <div class="summary-card">
+              <h4>Total Expenses</h4>
+              <div class="amt" id="total-expenses">₹0</div>
+            </div>
+            <div class="summary-card">
+              <h4>Remaining Budget</h4>
+              <div class="amt" id="remaining-budget">₹0</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Expenses -->
+    <section id="expenses" class="section stack">
+      <h2 class="title">Expense Tracker</h2>
+      <div class="grid">
+        <div class="col-6 stack">
+          <label class="field">
+            <span>Category</span>
+            <select id="expense-category">
+              <option value="food">Food & Dining</option>
+              <option value="transport">Transportation</option>
+              <option value="shopping">Shopping</option>
+              <option value="entertainment">Entertainment</option>
+              <option value="bills">Bills & Utilities</option>
+              <option value="health">Health & Fitness</option>
+              <option value="education">Education</option>
+              <option value="other">Other</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Amount (₹)</span>
+            <input type="number" id="expense-amount" placeholder="Enter amount" />
+          </label>
+          <label class="field">
+            <span>Note (optional)</span>
+            <input type="text" id="expense-note" placeholder="Add a note" />
+          </label>
+          <div>
+            <button class="btn" id="add-expense">Add Expense</button>
+          </div>
+        </div>
+        <div class="col-6 stack">
+          <h3 class="subtitle" style="margin:0">Recent Expenses</h3>
+          <div id="expense-list" class="stack"></div>
+          <div class="chart-wrap">
+            <canvas id="expense-chart" aria-label="Expenses by category"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Savings -->
+    <section id="savings" class="section stack">
+      <h2 class="title">Smart Savings Suggestions</h2>
+      <div id="savings-suggestions" class="stack"></div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© 2025 SmartPocket — Smart money management for everyone</div>
+  </footer>
+
+  <!-- Toast container -->
+  <div class="toast" id="toast" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
