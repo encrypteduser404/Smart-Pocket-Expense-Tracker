@@ -71,7 +71,7 @@
             <button class="btn primary" id="set-budget">Set Budget</button>
           </div>
         </div>
-        <div class="col-6">
+        <div class="col-6 stack">
           <div class="summary">
             <div class="summary-card">
               <h4>Total Budget</h4>
@@ -84,6 +84,24 @@
             <div class="summary-card">
               <h4>Remaining Budget</h4>
               <div class="amt" id="remaining-budget">₹0</div>
+            </div>
+          </div>
+
+          <!-- Income Tax Estimator -->
+          <div class="tax-card">
+            <h3 class="subtitle" style="margin:0 0 6px;">Income Tax Estimator (India – New Regime)</h3>
+            <p class="tax-helper">
+              Uses FY 2025–26 new-regime slabs for individuals. Approximate only, excludes cess/surcharge.
+            </p>
+            <label class="field">
+              <span>Annual taxable income (₹)</span>
+              <input type="number" id="tax-income" placeholder="e.g. 800000" />
+            </label>
+            <div>
+              <button class="btn ghost" id="calc-tax">Estimate Tax</button>
+            </div>
+            <div id="tax-results" class="tax-results">
+              <p class="tax-note">Enter your income to see an estimated annual, monthly tax and effective tax rate.</p>
             </div>
           </div>
         </div>
@@ -121,7 +139,13 @@
           </div>
         </div>
         <div class="col-6 stack">
-          <h3 class="subtitle" style="margin:0">Recent Expenses</h3>
+          <div class="chart-controls">
+            <h3 class="subtitle" style="margin:0">Recent Expenses</h3>
+            <div class="chart-type-selector">
+              <button id="bar-chart-btn" class="btn chart-btn active" data-chart-type="bar">Bar Chart</button>
+              <button id="pie-chart-btn" class="btn chart-btn" data-chart-type="pie">Pie Chart</button>
+            </div>
+          </div>
           <div id="expense-list" class="stack"></div>
           <div class="chart-wrap">
             <canvas id="expense-chart" aria-label="Expenses by category"></canvas>
